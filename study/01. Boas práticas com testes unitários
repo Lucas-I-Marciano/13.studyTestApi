@@ -1,0 +1,8 @@
+Etapas do Teste - Padrão Triple A
+    Arrange: O que eu quero validar
+    Act: Buscar informações / Executar funções
+    Assert: Comparar Arrange com Act
+
+Classificação dos Testes de Caixa Branca
+    Como tenho acesso ao código e acesso direto ao código, chamamos de Caixa Branca
+        Vantage: Ter acesso a melhorias pós teste
