@@ -11,9 +11,12 @@ describe("Teste em authServices", () => {
       senha: "test123",
     };
 
+    // Act
     const usuarioCadastrado = await authService.cadastrarUsuario(
       correctMockObject
     );
+
+    //Assert
     expect(usuarioCadastrado["content"]).toEqual(
       expect.objectContaining({
         id: expect.any(Number),
@@ -22,5 +25,17 @@ describe("Teste em authServices", () => {
         updated_at: expect.any(String),
       })
     );
+  });
+
+  it("Não deve cadastrar", async () => {
+    const incorrectMockObject = {
+      nome: "Lucas",
+      email: "l@l.com",
+    };
+
+    const promiseUsuarioCadastrado =
+      authService.cadastrarUsuario(incorrectMockObject);
+
+    await expect(promiseUsuarioCadastrado).rejects.toThrow("Senha obrigatoria");
   });
 });
