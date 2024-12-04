@@ -1,5 +1,5 @@
 import request from "supertest";
-import { afterEach, beforeEach, describe } from "@jest/globals";
+import { afterEach, beforeEach, describe, expect } from "@jest/globals";
 import app from "../../app.js";
 
 let server;
@@ -48,5 +48,35 @@ describe("Testes da rota de Autenticação (POST)", () => {
       .send(unregisteredLoginMock)
       .expect(500)
       .expect('"Usuario não cadastrado."');
+  });
+
+  it("O login deve validar e-mail e senha incorreto", async () => {
+    const unregisteredLoginMock = {
+      email: "l@lu",
+      senha: "admins",
+    };
+
+    await request(server)
+      .post("/login")
+      .send(unregisteredLoginMock)
+      .expect(500)
+      .expect('"Usuario ou senha invalido."');
+  });
+
+  it("O login deve validar se está sendo retornado um accessToken", async () => {
+    const registeredLoginMock = {
+      email: "l@lu",
+      senha: "admin",
+    };
+
+    const response = await request(server)
+      .post("/login")
+      .send(registeredLoginMock)
+      .expect(201);
+
+    expect(response["body"]).toEqual({
+      message: "Usuario conectado",
+      accessToken: expect.any(String),
+    });
   });
 });
