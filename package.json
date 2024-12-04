@@ -13,7 +13,8 @@
     "test:watch": "node --experimental-vm-modules node_modules/jest/bin/jest.js --watchAll",
     "test:coverage": "node --experimental-vm-modules node_modules/jest/bin/jest.js --watchAll --coverage",
     "test:service:auth": "node --experimental-vm-modules node_modules/jest/bin/jest.js --testPathPattern=./src/test/services/authService.test.js --verbose --detectOpenHandles",
-    "test:routes:auth": "node --experimental-vm-modules node_modules/jest/bin/jest.js --testPathPattern=./src/test/routes/authRoutes.test.js --verbose --detectOpenHandles"
+    "test:routes:auth": "node --experimental-vm-modules node_modules/jest/bin/jest.js --testPathPattern=./src/test/routes/authRoutes.test.js --verbose --detectOpenHandles",
+    "test:db": "node --experimental-vm-modules node_modules/jest/bin/jest.js --testPathPattern=./src/test/db/dbconfig.test.js --verbose --detectOpenHandles"
   },
   "keywords": [],
   "license": "ISC",
