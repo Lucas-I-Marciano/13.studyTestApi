@@ -1,0 +1,7 @@
+Caixa branca
+    Também conhecidos como testes estruturais, de código ou unitários
+    Abordagem de teste de software em que o testador tem conhecimento total da estrutura interna, lógica e implementação do código-fonte que está sendo testado. Eles são realizados com base na análise do código fonte
+
+Caixa preta
+    Também conhecidos como testes de integração e retorno
+    Abordagem de teste de software em que os testadores examinam o comportamento externo de um sistema sem ter conhecimento sobre sua estrutura interna ou código-fonte
