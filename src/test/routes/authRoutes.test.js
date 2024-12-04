@@ -2,8 +2,6 @@ import request from "supertest";
 import { afterEach, beforeEach, describe } from "@jest/globals";
 import app from "../../app.js";
 
-let servidor;
-
 let server;
 beforeEach(() => {
   const port = 3000;
@@ -17,7 +15,7 @@ afterEach(() => {
 describe("Testes da rota de Autenticação (POST)", () => {
   it("Não deve autenticar - Falta de senha", async () => {
     const loginMock = {
-      email: "l@l.com",
+      email: "l@lu",
     };
 
     await request(server)
@@ -37,5 +35,18 @@ describe("Testes da rota de Autenticação (POST)", () => {
       .send(loginMock)
       .expect(500)
       .expect('"O email do usuario é obrigatório."');
+  });
+
+  it("O login deve validar se o usuário está cadastrado", async () => {
+    const unregisteredLoginMock = {
+      email: "l@lucas",
+      senha: "admin",
+    };
+
+    await request(server)
+      .post("/login")
+      .send(unregisteredLoginMock)
+      .expect(500)
+      .expect('"Usuario não cadastrado."');
   });
 });
