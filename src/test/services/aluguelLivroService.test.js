@@ -5,15 +5,15 @@ describe("Using TDD - Test-Driven Development - calcularDataDevolucao", () => {
   const aluguelLivroService = new AluguelLivroService();
 
   test("Deve retornar a data de devolução", async () => {
-    const dataAlugado = new Date(2024, 1, 1);
+    const dataAlugado = "2024-01-01";
     const diasAlugados = 5;
-    const dataRetornoMock = new Date(2024, 1, 6);
+    const dataRetornoMock = new Date("2024-01-06");
 
-    const dataDevolução = await aluguelLivroService.calcularDataDevolucao(
+    const dataDevolucao = await aluguelLivroService.calcularDataDevolucao(
       dataAlugado,
       diasAlugados
     );
 
-    expect(dataRetornoMock).toBe(dataDevolução);
+    expect(dataDevolucao).toStrictEqual(dataRetornoMock);
   });
 });
